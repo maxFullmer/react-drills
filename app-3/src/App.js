@@ -1,34 +1,33 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react';
+import "./App.css"
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
+  constructor(props) {
+    super(props);
+    this.state = { 
       filterString: "",
-      foods: ["spaghetti", "ice cream", "sushi", "bologna", "cheese"]
-    };
+      dataArray: ["some","body","toucha","mine", "spaghet"]
+     };
   }
 
-  handleChange(filter) {
-    this.setState({ filterString: filter });
+  handleFilterString(val) {
+    this.setState({
+      filterString: val
+    })
   }
-
   render() {
-    let foodsToDisplay = this.state.foods
-      .filter((element, index) => {
-        return element.includes(this.state.filterString);
-      })
-      .map((element, index) => {
-        return <h2 key={index}>{element}</h2>;
-      });
-
+    let itemPredict = this.state.dataArray.filter((element,index) => {
+      return element.includes(this.state.filterString)
+    }).map((element,index) => {
+      return <h2 key={index}>{element}</h2>
+    })
     return (
       <div className="App">
-        <input onChange={e => this.handleChange(e.target.value)} type="text" />
-        {foodsToDisplay}
+        <input 
+        type="text"
+        onChange={event => this.handleFilterString(event.target.value)} 
+        />
+        <p>{itemPredict}</p>
       </div>
     );
   }

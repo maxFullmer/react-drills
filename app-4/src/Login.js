@@ -1,47 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Login extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            username: "",
-            password: ""
-        }
-
-        this.handleLogin = this.handleLogin.bind(this)
+    constructor(props) {
+        super(props);
+        this.state = { 
+            user: "",
+            pass: ""
+         };
+         this.handleLogin = this.handleLogin.bind(this)
     }
 
-    handleUsernameChange(name) {
-        this.setState({ 
-            username: name
-        })
-    }
-
-    handlePasswordChange(pass) {
+    handleUser(val) {
         this.setState({
-            password: pass
+            user: val
+        })
+    }  
+
+    handlePass(val) {
+        this.setState({
+            pass: val
         })
     }
 
     handleLogin() {
-        alert(`Username: ${this.state.username} Password ${this.state.password}`);
+        alert(`User: ${this.state.user} Password: ${this.state.pass}`)
     }
 
     render() {
         return (
             <div>
-                <input
-                onChange={event => this.handleUsernameChange(event.target.value)}
-                type="text"
-                />
-                <input
-                onChange={event => this.handlePasswordChange(event.target.value)}
-                type="text"
-                />
-                <button onClick={this.handleLogin}>Login</button>
+                <input type="text" onChange={event => this.handleUser(event.target.value)}/>
+                <input type="text" onChange={event => this.handlePass(event.target.value)}/>
+                <button value="Login" onClick={this.handleLogin}></button>
             </div>
-        )
+            
+        );
     }
 }
 

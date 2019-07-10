@@ -1,24 +1,20 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { Component } from 'react';
 import "./App.css";
 
 class App extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      foodList: ["sushi","pizza","blackened mahi mahi fish tacos"]
-    }
+  constructor(props) {
+    super(props);
+    this.state = { 
+      dataList: ["who", "said", "that"]
+     };
   }
-
-
   render() {
-    let foodsToDisplay = this.state.foodList.map((element, index) => {
-      return <h2 key={index}>{element}</h2>;
+    let dataToDisplay = this.state.dataList.map((element,index) => {
+      return <h2 key={index}>{element}</h2>
     })
     return (
       <div className="App">
-        {foodsToDisplay}
+        {dataToDisplay}
       </div>
     );
   }

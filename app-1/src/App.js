@@ -1,26 +1,23 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component } from 'react';
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      message: ""
-    }
+  constructor(props) {
+    super(props);
+    this.state = { message: "" };
   }
 
-  updateText(value) {
+  handleMessage(text) {
     this.setState({
-      message: value
-    })
+      message: text
+  })
   }
-
-
   render() {
     return (
-      <div className="App">
-        <input onChange={(event) => this.updateText(event.target.value)} type="text" />
-        <p>{this.state.message}</p>
+      <div>
+        <input type="text" onChange={event => this.handleMessage(event.target.value)} />
+        <div>
+          {this.state.message}
+        </div>
       </div>
     );
   }
